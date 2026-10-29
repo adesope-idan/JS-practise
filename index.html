@@ -22,16 +22,22 @@
         
     </section>
 
+    
+
     <section id="servicesSection" class="hidden w-full h-full items-center flex flex-col  px-20 py-5">
         <header class="flex justify-between items-center w-full pb-20">
             <h3 class="text-3xl font-semibold">ABZ BANK</h3>
 
-            <div class="flex gap-5 text-xl">
-                <h2 id="userInfo_name">[name]</h2>
-                <h2>
-                    <span>Bal:</span>
-                    <span id="userInfo_balance">[accBalance]</span>
-                </h2>
+            <div class="flex items-center gap-5 text-xl">
+                <div class="flex gap-5">
+                    <h2 id="userInfo_name">[name]</h2>
+                    <h2>
+                        <span>Bal:</span>
+                        <span id="userInfo_balance">[accBalance]</span>
+                    </h2>
+                </div>
+
+                <button id="btnLogOut" class="border bg-neutral-950 text-white font-semibold px-10 py-2" type="submit">Log Out</button>
             </div>
         </header>
         <div class="grid grid-cols-6 gap-10 w-3/4 font-semibold text-xl">
@@ -41,11 +47,12 @@
             <button id="btnOpenBuyAirtimeModal" class="col-span-3 bg-neutral-300 rounded-3xl h-35">BUY AIRTIME</button>
             <button id="pay-bills" class="col-span-3 bg-neutral-300 rounded-3xl h-35">PAY BILLS</button>
             <button id="btnOpenChangePinModal" class="col-span-3 bg-neutral-300 rounded-3xl h-35">CHANGE PIN</button>
+            <button id="btnOpenTransactionDetailsModal" class="col-span-3 bg-neutral-300 rounded-3xl h-35" type="submit">Transaction Details</button>
         </div>  
         
         <div id="modal" class="hidden fixed bg-neutral-700/70 shadow w-full h-screen top-0 flex items-center justify-center">
             
-            <div class="bg-white shadow rounded-2xl w-[25%] h-auto pb-10">
+            <div id="services" class="bg-white shadow rounded-2xl w-[25%] h-auto pb-10">
                 <div class="flex justify-between p-5 pb-3">
                     <h3 class="title text-2xl">[Modal Title]</h3>
                     <img class="modal-close" src="./images/iconoir--xmark.svg" alt="">
@@ -82,7 +89,7 @@
                     <button id="btnDeposit" type="submit" class="bg-neutral-900 text-white p-3">Deposit</button>
                 </section>
 
-                <section id="transferModalSection" class="flex flex-col gap-5 px-5">
+                <section id="transferModalSection" class="flex flex-col gap-5 px-5 hidden">
                     <div class="space-y-2 flex flex-col">
                         <label for="txtAccNoToTransferTo">Account No:</label>
                         <input id="txtAccNoToTransferTo" type="text" placeholder="Account no" class="p-3 border">
@@ -95,7 +102,7 @@
                 </section>
 
 
-                <section id="buyAirtimeModalSection" class="flex flex-col gap-5 px-5">
+                <section id="buyAirtimeModalSection" class="flex flex-col gap-5 px-5 hidden">
                     <div class="flex flex-col gap-2">
                         <label for="slctServiceProvider">Select a Service Provider</label>
                         <select id="slctServiceProvider" class="border w-full p-3">
@@ -128,6 +135,27 @@
                     </div>
                     <button id="btnChangePin" type="submit" class="bg-neutral-900 text-white p-3">CHANGE PIN</button>
                 </section>
+            </div>
+
+            <div id="transactionDetailsModalSection" class="bg-white shadow rounded-2xl w-[50%] h-auto p-5 pb-10 hidden">
+                <div class="flex justify-between pb-3">
+                    <h3 class="title2 text-2xl">Transaction Details</h3>
+                    <img class="modal-close2" src="./images/iconoir--xmark.svg" alt="">
+                </div>
+                
+                <div class="min-h-68.75 max-h-110 overflow-y-scroll">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <th>Name</th>
+                            <th>Transaction Type</th>
+                            <th>Amount</th>
+                        </thead>
+                        <tbody id="transactionBody">
+                            
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
         
